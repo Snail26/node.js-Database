@@ -24,7 +24,6 @@ function set(itemPath, content) {
             db = fs.readFileSync(dbName).toString();
         }
         if (db.includes(item + " {") && itemPath.split("/")[itemPath.split("/").length - 1] == item) {
-            console.log(item);
             fs.writeFileSync(dbName, db.replace(item + " {", item + " {\n\t" + content2 + "\n"));
             db = fs.readFileSync(dbName).toString();
         }
@@ -49,5 +48,4 @@ function get(tableName, subtable) {
     }
 }
 
-
-console.log(get("a"));
+//got this far in and realised i could juat use JSON.
