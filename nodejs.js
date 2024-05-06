@@ -6,9 +6,7 @@ function addPath(path) {
     var jsonDB = JSON.parse(fs.readFileSync(dbName));
     var lastPathes = [];
     path.replace("]", "").split("[").forEach((path) => {
-        if (lastPathes[0] = undefined) {
-            lastPathes.unshift(path);
-        }
+        lastPathes.unshift(path);
         if (eval(`jsonDB[${lastPathes.join("][")}]`)) {
 
         }
