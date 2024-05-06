@@ -1,2 +1,0 @@
-(
-    echo main ^{^})>"database.snailbase"
