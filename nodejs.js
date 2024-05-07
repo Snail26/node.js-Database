@@ -42,10 +42,15 @@ function setPathValue(itemPath, value) {
 
 function getItem(path) {
     const jsonDB = JSON.parse(fs.readFileSync(dbName).toString());
-    return eval(`jsonDB${path}`);
-}
+    const pathParts = path.split("[").map((part) => part.replace("]", ""));
 
-// Example usage:
-addPath("name[table1][table1:1]");
-setPathValue("name[table1][table1:1]", "New Value");
-console.log(getItem("name[table1][table1:1]"));
+    let currentObj = jsonDB;
+    for (const pathPart of pathParts) {
+        if (!currentObj[pathPart]) {
+            throw new Error(`Error getting value. Path undefined: ${path}`);
+        }
+        currentObj = currentObj[pathPart];
+    }
+
+    return currentObj;
+}
