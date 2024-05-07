@@ -2,7 +2,14 @@ const fs = require("fs");
 //fs preinstalled in node, no need for package.json
 const dbName = "database.json";
 if (fs.existsSync(dbName) != true) {
-    fs.appendFile(dbName, "{}");
+    fs.appendFile(dbName, "{}", (err) => {
+        if (err) {
+            throw err;
+        }
+        else {
+            console.log(`File ${dbName} not found. Created ${dbName}.`)
+        }
+    });
 }
 
 function addPath(path) {
