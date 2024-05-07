@@ -11,6 +11,9 @@ if (fs.existsSync(dbName) != true) {
         }
     });
 }
+else if (fs.readFileSync(dbName).toString() == "") {
+    fs.writeFileSync(dbName, "{}");
+}
 
 function addPath(path) {
     const jsonDB = JSON.parse(fs.readFileSync(dbName));
@@ -29,7 +32,7 @@ function addPath(path) {
 function setPathValue(itemPath, value) {
     var jsonDB = JSON.parse(fs.readFileSync(dbName).toString());
     if (eval(`jsonDB${itemPath}`) != undefined) {
-        eval(`jsonDB${itemPath} = {"value": ${value}};`);
+        eval(`jsonDB${itemPath}`) = {"value": value};
     }
     else {
         throw new Error(`Error setting value: ${value}. Path undefined.`);
