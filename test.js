@@ -1,8 +1,11 @@
+var evalr;
 fetch("https://raw.githubusercontent.com/Snail26/node.js-Database/main/nodejs.js").then(r => r.text().then((r) => {
-    eval(r);
-}))
+    evalr = r;
+    ready();
+}));
 function ready() {
+    eval(evalr)
     setTimeout(() => {
-        addPath("[snails][snail1]")
+        addPath("['snails']")
     }, 1000)
 }

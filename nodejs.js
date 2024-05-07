@@ -17,6 +17,7 @@ function addPath(path) {
     var lastPathes = [];
     path.replace("]", "").split("[").forEach((path) => {
         lastPathes.unshift(path);
+        console.log(path);
         if (eval(`jsonDB[${lastPathes.join("][")}]`) == undefined) {
             eval(`jsonDB[${lastPathes.join("][")}]`) = {};
         }
