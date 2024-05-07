@@ -13,14 +13,17 @@ if (fs.existsSync(dbName) != true) {
 }
 
 function addPath(path) {
-    var jsonDB = JSON.parse(fs.readFileSync(dbName));
-    var lastPathes = [];
-    path.replace("]", "").split("[").forEach((path1) => {
-        lastPathes.unshift(path1);
-        if (eval(`jsonDB[${lastPathes.join("][")}]`) == undefined) {
-            eval(`jsonDB[${lastPathes.join("][")}]`) = {};
+    const jsonDB = JSON.parse(fs.readFileSync(dbName));
+    const lastPathes = path.replace("]", "").split("[");
+
+    let currentObj = jsonDB;
+    lastPathes.forEach((path1) => {
+        if (!currentObj[path1]) {
+            currentObj[path1] = {};
         }
+        currentObj = currentObj[path1];
     });
+
     fs.writeFileSync(dbName, JSON.stringify(jsonDB));
 }
 function setPathValue(itemPath, value) {
