@@ -14,3 +14,8 @@ function ready() {
     // your code here
 }
 ```.
+## How do I use it? What are the functions?
+1. `addPath()`: Adds a JSON path
+> Example: ```addPath("table[subtable][subtable1]")```
+#### Output in JSON:
+>`{"table": {"subtable": {"subtable1": {}}}}`
