@@ -15,9 +15,8 @@ if (fs.existsSync(dbName) != true) {
 function addPath(path) {
     var jsonDB = JSON.parse(fs.readFileSync(dbName));
     var lastPathes = [];
-    path.replace("]", "").split("[").forEach((path) => {
-        lastPathes.unshift(path);
-        console.log(path);
+    path.replace("]", "").split("[").forEach((path1) => {
+        lastPathes.unshift(path1);
         if (eval(`jsonDB[${lastPathes.join("][")}]`) == undefined) {
             eval(`jsonDB[${lastPathes.join("][")}]`) = {};
         }
