@@ -25,13 +25,20 @@ function addPath(path) {
 
 function setPathValue(itemPath, value) {
     const jsonDB = JSON.parse(fs.readFileSync(dbName).toString());
-    if (jsonDB[itemPath] !== undefined) {
-        jsonDB[itemPath] = { value };
-    } else {
-        throw new Error(`Error setting value: ${value}. Path undefined.`);
+    const pathParts = itemPath.split("[").map((part) => part.replace("]", ""));
+
+    let currentObj = jsonDB;
+    for (const pathPart of pathParts) {
+        if (!currentObj[pathPart]) {
+            throw new Error(`Error setting value: ${value}. Path undefined.`);
+        }
+        currentObj = currentObj[pathPart];
     }
+
+    currentObj.value = value;
     fs.writeFileSync(dbName, JSON.stringify(jsonDB));
 }
+
 
 function getItem(path) {
     const jsonDB = JSON.parse(fs.readFileSync(dbName).toString());
