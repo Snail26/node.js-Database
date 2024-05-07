@@ -1,5 +1,8 @@
-# How do I include this code into my node.js?
-Simply copy and paste `var evalr;
+# Snail26 node.js JSON database
+This code creates a JSON file called `database.json` and adds functions to your code to easily be able to read and manipulate the JSON code just like you could with a database.
+## How do I include this code into my node.js?
+Simply copy and paste ```
+var evalr;
 fetch("https://raw.githubusercontent.com/Snail26/node.js-Database/main/nodejs.js").then(r => r.text().then((r) => {
     evalr = r;
     ready();
@@ -7,4 +10,5 @@ fetch("https://raw.githubusercontent.com/Snail26/node.js-Database/main/nodejs.js
 
 function ready() {
     eval(evalr);
-}`.
+}
+```.
