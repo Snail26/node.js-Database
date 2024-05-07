@@ -14,7 +14,7 @@ if (fs.existsSync(dbName) != true) {
 
 function addPath(path) {
     const jsonDB = JSON.parse(fs.readFileSync(dbName));
-    const lastPathes = path.replace("]", "").split("[");
+    const lastPathes = path.replace(/]/igm, "").split("[");
 
     let currentObj = jsonDB;
     lastPathes.forEach((path1) => {
