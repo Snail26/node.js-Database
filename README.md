@@ -16,21 +16,21 @@ function ready() {
 ```
 .
 ## How do I use it? What are the functions?
-1. `addPath(path)`: Adds a JSON path.
+### 1. `addPath(path)`: Adds a JSON path.
 > Syntax `addPath(path);`
 #####
 > Example: `addPath("table[subtable][subtable1]")`
 #### Output in JSON:
 >`{"table": {"subtable": {"subtable1": {}}}}`
 
-2. `setPathValue(path, value)`: Sets a path's value.
+### 2. `setPathValue(path, value)`: Sets a path's value.
 > Syntax `setPathValue(path, value);`
 #####
 > Example `setPathValue("table[subtable][subtable1]", "This is subtable1's value!");`
 #### Output in JSON:
 >`{"table": {"subtable": {"subtable1": {"value": "This is subtable1's value!"}}}}`
 
-3. `getItem(path)`: Returns a path's value and subpathes.
+### 3. `getItem(path)`: Returns a path's value and subpathes.
 > Syntax `getItem(path);`
 #####
 > Example `getItem("table[subtable][subtable1]");`
