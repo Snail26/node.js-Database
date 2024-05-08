@@ -35,4 +35,4 @@ function ready() {
 #####
 > Example `getItem("table[subtable][subtable1]");`
 #### Output in Console from JSON:
->`{ value: 'New Value' }`
+>`{ value: 'This is subtable1's value!' }`
