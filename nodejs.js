@@ -26,7 +26,7 @@ function addPath(path) {
 function setPathValue(itemPath, value) {
     const jsonDB = JSON.parse(fs.readFileSync(dbName).toString());
     const pathParts = itemPath.split("[").map((part) => part.replace("]", ""));
-
+    let lastObj = pathParts.pop();
     let currentObj = jsonDB;
     for (const pathPart of pathParts) {
         if (!currentObj[pathPart]) {
@@ -34,8 +34,8 @@ function setPathValue(itemPath, value) {
         }
         currentObj = currentObj[pathPart];
     }
-    console.log(currentObj);
-    currentObj.value = value;
+    
+    currentObj[lastObj] = value;
     fs.writeFileSync(dbName, JSON.stringify(jsonDB));
 }
 
