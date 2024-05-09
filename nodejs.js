@@ -35,7 +35,7 @@ function setPathValue(itemPath, value) {
         currentObj = currentObj[pathPart];
     }
 
-    currentObj.value = value;
+    currentObj = value;
     fs.writeFileSync(dbName, JSON.stringify(jsonDB));
 }
 
