@@ -49,3 +49,4 @@ class database {
         return currentObj;
     }
 }
+module.exports = database;
